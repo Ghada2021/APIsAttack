@@ -4,20 +4,13 @@ import random
 import pandas as pd
 import seaborn as sn
 import numpy as np
-import xgboost
+
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder
 from sklearn.linear_model import LogisticRegression
-from sklearn.ensemble import BaggingClassifier
-from sklearn.ensemble import AdaBoostClassifier,RandomForestClassifier
-from sklearn.ensemble import GradientBoostingClassifier
-from xgboost import XGBClassifier
-from lightgbm import LGBMClassifier
 from sklearn.tree import DecisionTreeClassifier
-from keras.models import  Sequential
-from keras.layers import Dense
-import keras.activations,keras.metrics,keras.losses
+from joblib import load
 
 def models():
   data= pd.read_csv("supervised_dataset.csv")
@@ -58,15 +51,14 @@ def models():
   tree.fit(x_train,y_train)
   from joblib import dump
   dump(tree, 'tree.joblib')
-
   clf_lda = load('tree.joblib')
   print("LDA score and classification:")
-  print(clf_lda.score(X_test, y_test))
-  print(clf_lda.predict(X_test))
+  print(clf_lda.score(x_test, y_test))
+  print(clf_lda.predict(x_test))
   clf_nn = load('lr.joblib')
   print("NN score and classification:")
-  print(clf_nn.score(X_test, y_test))
-  print(clf_nn.predict(X_test))
+  print(clf_nn.score(x_test, y_test))
+  print(clf_nn.predict(x_test))
 
 if __name__ == '__main__':
     models()
