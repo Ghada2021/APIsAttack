@@ -23,11 +23,7 @@ def models():
   data['inter_api_access_duration(sec)']=data['inter_api_access_duration(sec)'].fillna(data['inter_api_access_duration(sec)'].mean())
   data['api_access_uniqueness']=data['api_access_uniqueness'].fillna(data['api_access_uniqueness'].mean())
 
-  corr = data.corr(method='kendall')
-  my_m=np.triu(corr)
-    
-  
-  cat_col=data.select_dtypes(include='object').columns.values
+
 
   lab=LabelEncoder()
   data['type_ip']=lab.fit_transform(data['ip_type'])
