@@ -9,6 +9,7 @@ RUN pip install lightgbm --no-cache-dir
 RUN pip install matplotlib --no-cache-dir
 RUN pip install xgboost --no-cache-dir
 RUN pip install seaborn --no-cache-dir
+RUN pip install tensorflow --no-cache-dir
 RUN pip install joblib 
 
 COPY supervised_dataset.csv ./supervised_dataset.csv
