@@ -51,15 +51,22 @@ def models():
 
   lr=LogisticRegression(max_iter=200)
   lr.fit(x_train,y_train)
-  
+  from joblib import dump
+  dump(lr, 'lr.joblib')
 
   tree=DecisionTreeClassifier(criterion='entropy',max_depth=1)
   tree.fit(x_train,y_train)
-  
+  from joblib import dump
+  dump(tree, 'tree.joblib')
 
-  rforest=RandomForestClassifier(criterion='entropy')
-  rforest.fit(x_train,y_train)
-  
+  clf_lda = load('tree.joblib')
+    print("LDA score and classification:")
+    print(clf_lda.score(X_test, y_test))
+    print(clf_lda.predict(X_test))
+  clf_nn = load('lr.joblib')
+    print("NN score and classification:")
+    print(clf_nn.score(X_test, y_test))
+    print(clf_nn.predict(X_test))
 
 if __name__ == '__main__':
     models()
