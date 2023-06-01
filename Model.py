@@ -40,7 +40,7 @@ def models():
   data['type_ip']=lab.fit_transform(data['ip_type'])
   data['sources']=lab.fit_transform(data['source'])
   data['classifiction']=lab.fit_transform(data['classification'])
-  print()
+  
  
   x=data[['sequence_length(count)','vsession_duration(min)'
   ,'num_sessions','num_users' ,'num_unique_apis'
@@ -51,15 +51,15 @@ def models():
 
   lr=LogisticRegression(max_iter=200)
   lr.fit(x_train,y_train)
-  print('The logistic regression: ',lr.score(x_test,y_test))
+  
 
   tree=DecisionTreeClassifier(criterion='entropy',max_depth=1)
   tree.fit(x_train,y_train)
-  print('Dtree ',tree.score(x_test,y_test))
+  
 
   rforest=RandomForestClassifier(criterion='entropy')
   rforest.fit(x_train,y_train)
-  print('The random forest: ',rforest.score(x_test,y_test))
+  
 
 if __name__ == '__main__':
     models()
