@@ -60,13 +60,13 @@ def models():
   dump(tree, 'tree.joblib')
 
   clf_lda = load('tree.joblib')
-    print("LDA score and classification:")
-    print(clf_lda.score(X_test, y_test))
-    print(clf_lda.predict(X_test))
+  print("LDA score and classification:")
+  print(clf_lda.score(X_test, y_test))
+  print(clf_lda.predict(X_test))
   clf_nn = load('lr.joblib')
-    print("NN score and classification:")
-    print(clf_nn.score(X_test, y_test))
-    print(clf_nn.predict(X_test))
+  print("NN score and classification:")
+  print(clf_nn.score(X_test, y_test))
+  print(clf_nn.predict(X_test))
 
 if __name__ == '__main__':
     models()
